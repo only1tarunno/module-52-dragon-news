@@ -1,10 +1,11 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import userLogo from "../../../assets/user.png";
 import { useContext } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const links = (
     <>
       <li>
@@ -21,7 +22,9 @@ const Navbar = () => {
 
   const handleLogOut = () => {
     logOut()
-      .then()
+      .then(() => {
+        navigate("/");
+      })
       .catch((error) => console.log(error));
   };
   return (
