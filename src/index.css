@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.leftSidebar .active {
+  background: #e7e7e7;
+  padding: 15px 30px;
+}
