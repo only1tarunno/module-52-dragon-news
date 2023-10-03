@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Navbar from "../sharedNav/Navbar/Navbar";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Register = () => {
+  const { registerUser } = useContext(AuthContext);
+
   const handleRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
@@ -10,7 +14,14 @@ const Register = () => {
     const pass = e.target.pass.value;
     const accepted = e.target.checkbox.checked;
     console.log(name, photo, email, pass, accepted);
+
+    registerUser(email, pass)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((error) => console.log(error.message));
   };
+
   return (
     <div className="">
       <Navbar></Navbar>

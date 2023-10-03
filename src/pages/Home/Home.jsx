@@ -1,10 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Header from "../sharedNav/Header/Header";
 import LeftSideNav from "../sharedNav/LeftSideNav";
 import Navbar from "../sharedNav/Navbar/Navbar";
 import RightSideNav from "../sharedNav/RightSideNav";
 import Marquee from "react-fast-marquee";
-import Posts from "../../components/Posts";
 
 const Home = () => {
   return (
@@ -30,7 +29,7 @@ const Home = () => {
           <LeftSideNav></LeftSideNav>
         </div>
         <div className="lg:col-span-2">
-          <Posts></Posts>
+          <Outlet></Outlet>
         </div>
         <div>
           <RightSideNav></RightSideNav>

@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import userLogo from "../../../assets/user.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
   const links = (
     <>
       <li>
@@ -15,6 +18,12 @@ const Navbar = () => {
       </li>
     </>
   );
+
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -48,13 +57,24 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end">
-          <img src={userLogo} className="w-10 h-10 me-2" alt="" />
-          <Link
-            className="px-8 btn rounded  capitalize text-white font-semibold text-xl hover:bg-[#403F3F] bg-[#403F3F]"
-            to="/login"
-          >
-            Login
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-3">
+              <img src={userLogo} className="w-10 h-10 me-2" alt="" />
+              <button
+                onClick={handleLogOut}
+                className="px-8 btn rounded  capitalize text-white font-semibold text-xl hover:bg-[#403F3F] bg-[#403F3F]"
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <Link
+              className="px-8 btn rounded  capitalize text-white font-semibold text-xl hover:bg-[#403F3F] bg-[#403F3F]"
+              to="/login"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -29,10 +29,10 @@ const LeftSideNav = () => {
           {categories.map((category) => (
             <NavLink
               key={category.id}
-              className="text-xl font-medium"
+              className="text-xl font-medium block p-[15px]"
               to={`/category/${category.id}`}
             >
-              <p className="p-2">{category.name}</p>
+              {category.name}
             </NavLink>
           ))}
         </div>
